@@ -1,0 +1,277 @@
+:root {
+  --bg-gradient: radial-gradient(circle at top, rgba(255, 208, 236, 0.5), rgba(27, 27, 79, 0.9));
+  --primary-color: #ff8fab;
+  --secondary-color: #3a2a5e;
+  --text-color: #fdf0f6;
+  --button-bg: rgba(255, 255, 255, 0.15);
+  --button-border: rgba(255, 255, 255, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Montserrat", system-ui, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  background: linear-gradient(135deg, #0d0b29, #251143 60%, #ff8fab);
+  position: relative;
+  overflow: hidden;
+}
+
+.background-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-gradient);
+  opacity: 0.9;
+  z-index: -2;
+}
+
+main.invitation {
+  position: relative;
+  padding: clamp(2rem, 4vw, 4rem);
+  max-width: 960px;
+  width: min(92%, 960px);
+  background: rgba(20, 16, 49, 0.75);
+  border-radius: 32px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 60px rgba(6, 1, 21, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+header h1 {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  margin: 0.2rem 0 0.6rem;
+  color: #ffdce3;
+}
+
+header .date {
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+header .subtitle {
+  margin: 0;
+  font-weight: 300;
+  font-size: clamp(1rem, 2.2vw, 1.4rem);
+}
+
+.music-player {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 auto 2.5rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 320px;
+  backdrop-filter: blur(10px);
+}
+
+.play-button {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  font-size: 1.5rem;
+}
+
+.play-button:hover,
+.play-button:focus {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+
+.play-button .material-symbols {
+  font-family: "Material Symbols Rounded", "Material Icons", sans-serif;
+  font-variation-settings: "FILL" 1, "wght" 300, "GRAD" 0, "opsz" 24;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.track-title {
+  font-weight: 600;
+  margin: 0;
+}
+
+.track-artist {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.message {
+  margin-bottom: 3rem;
+}
+
+.message p {
+  font-size: clamp(1.1rem, 2.3vw, 1.4rem);
+  line-height: 1.8;
+  text-align: center;
+  margin: 0;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  height: 200px;
+  filter: saturate(110%) contrast(95%);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.6s ease;
+}
+
+.gallery img:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.question {
+  text-align: center;
+}
+
+.question h2 {
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  margin-bottom: 1.5rem;
+  font-family: "Great Vibes", cursive;
+}
+
+.actions {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+button.primary,
+button.ghost {
+  border-radius: 999px;
+  padding: 0.8rem 2.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+button.primary {
+  background: linear-gradient(135deg, #ff8fab, #f36c9a);
+  color: #1e0d2b;
+  box-shadow: 0 10px 30px rgba(255, 111, 156, 0.5);
+}
+
+button.primary.accepted {
+  background: linear-gradient(135deg, #ffe066, #ff8fab);
+  color: #201025;
+  box-shadow: 0 10px 35px rgba(255, 198, 109, 0.45);
+}
+
+button.primary:hover,
+button.primary:focus {
+  transform: translateY(-3px);
+  outline: none;
+}
+
+button.ghost {
+  background: var(--button-bg);
+  border-color: var(--button-border);
+  color: var(--text-color);
+}
+
+button.ghost:hover,
+button.ghost:focus {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+
+button.ghost.converted {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #1c0f30;
+}
+
+.response {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+#hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.heart {
+  position: absolute;
+  color: #ff9fba;
+  font-size: 1.2rem;
+  animation: float-up 4s ease-in infinite;
+  opacity: 0;
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(0) scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-150px) scale(1.2) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .actions {
+    gap: 1rem;
+  }
+
+  button.primary,
+  button.ghost {
+    width: 100%;
+  }
+
+  .music-player {
+    width: 100%;
+  }
+}
