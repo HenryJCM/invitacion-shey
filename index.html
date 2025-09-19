@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invitación Especial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:wght@300"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background-overlay"></div>
+    <main class="invitation">
+      <header>
+        <p class="date">Noche mágica · 12 de abril</p>
+        <h1>Una cita para recordar</h1>
+        <p class="subtitle">Tú, yo y el concierto de Danny Ocean</p>
+      </header>
+
+      <section class="music-player" aria-label="Reproductor de música romántica">
+        <button id="play-button" class="play-button" aria-label="Reproducir canción">
+          <span class="material-symbols">play_arrow</span>
+        </button>
+        <div class="track-info">
+          <p class="track-title">Nuestra canción</p>
+          <p class="track-artist">Danny Ocean vibes</p>
+        </div>
+      </section>
+
+      <section class="message">
+        <p>
+          Amor mío, cada latido se acelera solo con imaginar tu sonrisa bajo las
+          luces del escenario. Quiero tomarte de la mano, cantar contigo y vivir
+          esta noche como si el tiempo se detuviera. ¿Aceptarías compartir esta
+          aventura conmigo y dejar que Danny Ocean sea la banda sonora de nuestro
+          momento?
+        </p>
+      </section>
+
+      <section class="gallery" aria-label="Recuerdos">
+        <img src="https://images.unsplash.com/photo-1520854221050-0f4caff449fb?auto=format&fit=crop&w=600&q=80" alt="Pareja disfrutando de una vista romántica" />
+        <img src="https://images.unsplash.com/photo-1496284427489-f59461d8a8e6?auto=format&fit=crop&w=600&q=80" alt="Luces de concierto" />
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80" alt="Manos entrelazadas" />
+      </section>
+
+      <section class="question" aria-live="polite">
+        <h2>¿Quieres ir conmigo?</h2>
+        <div class="actions">
+          <button id="yes-button" class="primary">¡Sí!</button>
+          <button id="no-button" class="ghost">No lo sé…</button>
+        </div>
+        <p id="response" class="response" hidden></p>
+      </section>
+    </main>
+
+    <div id="hearts"></div>
+
+    <audio id="romantic-track" loop>
+      <source src="https://cdn.pixabay.com/download/audio/2023/03/29/audio_5a1a2c5d43.mp3?filename=romantic-violin-144997.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
