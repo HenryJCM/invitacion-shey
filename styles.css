@@ -15,13 +15,12 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: "Montserrat", system-ui, sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: var(--text-color);
   background: linear-gradient(135deg, #0d0b29, #251143 60%, #ff8fab);
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: clamp(1.5rem, 5vw, 3rem) 0;
 }
 
 .background-overlay {
@@ -37,6 +36,7 @@ main.invitation {
   padding: clamp(2rem, 4vw, 4rem);
   max-width: 960px;
   width: min(92%, 960px);
+  margin: 0 auto;
   background: rgba(20, 16, 49, 0.75);
   border-radius: 32px;
   backdrop-filter: blur(14px);
@@ -96,6 +96,11 @@ header .subtitle {
   cursor: pointer;
   transition: transform 0.3s ease, background 0.3s ease;
   font-size: 1.5rem;
+}
+
+.play-button.error {
+  box-shadow: 0 0 0 3px rgba(255, 143, 171, 0.35);
+  animation: pulse 1s ease-in-out 2;
 }
 
 .play-button:hover,
@@ -241,27 +246,60 @@ button.ghost.converted {
 
 .heart {
   position: absolute;
+  left: 50%;
+  top: 60%;
   color: #ff9fba;
   font-size: 1.2rem;
-  animation: float-up 4s ease-in infinite;
+  transform: translate(-50%, -50%);
+  animation: heart-burst var(--duration, 1.8s) ease-out forwards;
   opacity: 0;
 }
 
-@keyframes float-up {
+.heart:nth-child(odd) {
+  filter: drop-shadow(0 0 6px rgba(255, 176, 200, 0.45));
+}
+
+@keyframes heart-burst {
   0% {
-    transform: translateY(0) scale(0.5) rotate(0deg);
     opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
   }
-  20% {
+  25% {
     opacity: 1;
   }
+  75% {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty)))
+      scale(var(--scale)) rotate(var(--rz));
+  }
   100% {
-    transform: translateY(-150px) scale(1.2) rotate(18deg);
     opacity: 0;
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty) - 40px))
+      scale(0.25) rotate(calc(var(--rz) + 20deg));
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
   }
 }
 
 @media (max-width: 640px) {
+  body {
+    padding: 1.5rem 0;
+  }
+
+  main.invitation {
+    padding: 2rem clamp(1.25rem, 6vw, 1.75rem);
+    border-radius: 28px;
+  }
+
   .actions {
     gap: 1rem;
   }
@@ -273,5 +311,13 @@ button.ghost.converted {
 
   .music-player {
     width: 100%;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery img {
+    height: clamp(200px, 60vw, 260px);
   }
 }
